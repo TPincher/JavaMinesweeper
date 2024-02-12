@@ -57,8 +57,57 @@ public class Tile {
 		return surroundingMines;
 	}
 
-	public void setSurroundingMines(int surroundingMines) {
-		this.surroundingMines = surroundingMines;
+	public void setSurroundingMines(Tile[] tileObjectsArray, int tileNumber, int rowLength, int totalTiles) {
+
+		int mineCount = 0;
+		
+		
+		//top-left
+		if ((tileNumber - (rowLength + 1) >= 0) && (tileNumber % rowLength != 0) && (tileObjectsArray[tileNumber - (rowLength + 1)].hasMine == true)) {
+				mineCount += 1;
+			};
+		
+		//top
+		if ((tileNumber - (rowLength + 1) >= 0) && (tileObjectsArray[tileNumber - rowLength].hasMine == true)) {
+				mineCount += 1;
+			};
+		
+		//top-right
+		if ((tileNumber - (rowLength + 1) >= 0) && ((tileNumber + 1) % rowLength != 0) && (tileObjectsArray[( tileNumber - (rowLength - 1))].hasMine == true)) {
+				mineCount += 1;
+			};
+		
+		//left
+		if ((tileNumber % rowLength != 0) && (tileObjectsArray[tileNumber - 1].hasMine == true)) {
+				mineCount += 1;
+			};
+		
+		//right
+		if (((tileNumber + 1) % rowLength != 0) && (tileObjectsArray[tileNumber + 1].hasMine == true)) {
+					mineCount += 1;
+		};
+		
+		//bottom-left
+		if ((tileNumber + (rowLength + 1) <= totalTiles) && (tileNumber % rowLength != 0) && (tileObjectsArray[tileNumber + (rowLength - 1)].hasMine == true)) {
+				mineCount += 1;
+		};
+		
+		//bottom
+		if ((tileNumber + (rowLength + 1) <= totalTiles) && (tileObjectsArray[tileNumber + rowLength].hasMine == true)) {
+				mineCount += 1;
+		};
+		
+		//bottom-right
+		if ((tileNumber + (rowLength + 1) <= totalTiles) && ((tileNumber + 1) % rowLength != 0) && (tileObjectsArray[tileNumber + (rowLength + 1)].hasMine == true)) {
+				mineCount += 1;
+		};
+		
+		if (tileObjectsArray[tileNumber].hasMine == true) {
+			mineCount = 9;
+		}
+
+		
+		this.surroundingMines = mineCount;
 	}
 
 	public void TileArrayMaker (int totalTiles) {
