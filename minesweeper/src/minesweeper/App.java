@@ -58,36 +58,30 @@ public class App {
 		
 		int totalTiles = Helpers.boardHelper(boardHeight, boardWidth);
 		int totalMines = (int) Math.ceil(totalTiles / 10);
-		char firstLetter;
-		int firstNumber;
-		int startTile;
+		char activeLetter;
+		int activeNumber;
+		int activeTile;
 		
 				
 		System.out.printf("There will be %s tiles and %s mines\n", totalTiles, totalMines);
-		Gameboard.makeBoardTop(boardWidth);
-		Gameboard.blankRow(boardWidth);
-		for (int x = 0; x <= boardHeight - 2; x++) {
-		Gameboard.makeBoardDivider(boardWidth);
-		Gameboard.blankRow(boardWidth);
-		}
-		Gameboard.makeBoardBottom(boardWidth);
+		Gameboard.makeBlankBoard(boardWidth, boardHeight, totalTiles);
 		
 		
 		System.out.println("Select your starting square - it'll never have a mine on it.\n"
 				+ "Choose a square by selecting a letter for a column");
-		firstLetter = s.next().charAt(0);
+		activeLetter = s.next().charAt(0);
 		System.out.println("And now a number for a row.");
-		firstNumber = s.nextInt();
+		activeNumber = s.nextInt();
 		
-		startTile = (Helpers.convertInputs(firstLetter, firstNumber, boardHeight));
-		System.out.println(startTile);
+		activeTile = (Helpers.convertInputs(activeLetter, activeNumber, boardHeight));
+		System.out.println(activeTile);
 		
 		Tile[] tileObjectsArray = new Tile[totalTiles];
 		for (int i = 0; i <= totalTiles-1; i++) {
 			tileObjectsArray[i] = new Tile(i, false, false, false, 0);	
 		}
 				
-		ArrayList<Integer> mines = Game.setMines(totalMines, totalTiles, startTile);
+		ArrayList<Integer> mines = Game.setMines(totalMines, totalTiles, activeTile);
 				
 		for (int i = 0; i < mines.size(); i++) {
 		    int activeMine = (mines.get(i));
@@ -95,21 +89,26 @@ public class App {
 		}
 		
 		System.out.println(mines);
+
+		for (int i = 0; i < tileObjectsArray.length; i++) {
+		    Tile tile = tileObjectsArray[i];
+		    tile.setSurroundingMines(tileObjectsArray, i, boardWidth, totalTiles);
+//		    Uncomment the next line to view the entire gameboard for debugging
+//		    tile.setOpen(true);
+		}
 		
-//		System.out.println(tileObjectsArray[0].getTileNumber());
-//		System.out.println(tileObjectsArray[1].getTileNumber());
-//		System.out.println(tileObjectsArray[2].getTileNumber());
-//		System.out.println(tileObjectsArray[3].getTileNumber());
-//		System.out.println(tileObjectsArray[3].isOpen());
-//		tileObjectsArray[3].setOpen(true);
-//		System.out.println(tileObjectsArray[3].isOpen());
-//		System.out.println(tileObjectsArray[624].getTileNumber());
+		Game.setGameActive(true);
 		
+		while (Game.isGameActive()) {
+			activeLetter = s.next().charAt(0);
+			activeNumber = s.nextInt();
+			activeTile = (Helpers.convertInputs(activeLetter, activeNumber, boardHeight));
+			Game.takeTurn(activeTile, tileObjectsArray);
+			System.out.printf("You chose tile %s%s\n", activeLetter, activeNumber);
+			Gameboard.makeBoard(boardWidth, boardHeight, totalTiles, tileObjectsArray);
+		}
 		
-		
-		
-		int tileCheck = s.nextInt();
-		Game.takeTurn(tileCheck);
+
 		s.close();
 		
 	}
