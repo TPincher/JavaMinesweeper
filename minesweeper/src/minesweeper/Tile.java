@@ -102,6 +102,7 @@ public class Tile {
 				mineCount += 1;
 		};
 		
+		// This will display a tile as a '9' if it has a mine on it, which a non-mined tile can never be.
 		if (tileObjectsArray[tileNumber].hasMine == true) {
 			mineCount = 9;
 		}

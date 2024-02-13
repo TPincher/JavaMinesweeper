@@ -7,6 +7,7 @@ public class Game {
 	static ArrayList<Integer> mines = new ArrayList<Integer>();
 	static ArrayList<Integer> checkedTiles = new ArrayList<Integer>();
 	private static boolean gameActive = false;
+	private static boolean isGameWon = false;
 	
 	//Need a method to set the mines array at the start of game
 	public static ArrayList<Integer> setMines(int mineCount, int tileCount, int startTile) {
@@ -32,9 +33,20 @@ public class Game {
 		} else {
 			checkedTiles.add(turnTile);
 			tileObjectsArray[turnTile].setOpen(true);
-//			System.out.println(tileObjectsArray[turnTile].isOpen());
-//			System.out.println(checkedTiles);
+			
 		}
+	}
+
+	public static void isGameWon(int totalTiles, int totalMines) {
+		int size = checkedTiles.size();
+		if (size == (totalTiles - totalMines)) {
+			setGameActive(false);
+			System.out.println("Congratulations! You've cleared the field");
+		}
+	}
+
+	public static void setGameWon(boolean isGameWon) {
+		Game.isGameWon = isGameWon;
 	}
 
 	public static boolean isGameActive() {

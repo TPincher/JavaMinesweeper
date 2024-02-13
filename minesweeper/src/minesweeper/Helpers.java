@@ -11,8 +11,8 @@ public class Helpers {
         return letter - 'A';
     }
 		
-    public static int convertInputs(char letter, int number, int boardHeight) {
+    public static int convertInputs(char letter, int number, int boardWidth) {
     	int convertedLetter = convertColumnInput(letter);
-		return (convertedLetter + ((number -1) * boardHeight));
+		return (convertedLetter + ((number -1) * boardWidth));
     }
 }
