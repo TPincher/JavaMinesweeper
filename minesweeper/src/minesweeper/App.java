@@ -73,13 +73,15 @@ public class App {
 		System.out.println("And now a number for a row.");
 		activeNumber = s.nextInt();
 		
-		activeTile = (Helpers.convertInputs(activeLetter, activeNumber, boardHeight));
-		System.out.println(activeTile);
+		activeTile = (Helpers.convertInputs(activeLetter, activeNumber, boardWidth));
 		
 		Tile[] tileObjectsArray = new Tile[totalTiles];
 		for (int i = 0; i <= totalTiles-1; i++) {
 			tileObjectsArray[i] = new Tile(i, false, false, false, 0);	
 		}
+		
+		Game.takeTurn(activeTile, tileObjectsArray);
+
 				
 		ArrayList<Integer> mines = Game.setMines(totalMines, totalTiles, activeTile);
 				
@@ -88,24 +90,28 @@ public class App {
 		    tileObjectsArray[activeMine].setHasMine(true);
 		}
 		
-		System.out.println(mines);
+//      Uncomment the next line for debugging - an array will be displayed showing all the mines
+//		System.out.println(mines);
 
 		for (int i = 0; i < tileObjectsArray.length; i++) {
 		    Tile tile = tileObjectsArray[i];
 		    tile.setSurroundingMines(tileObjectsArray, i, boardWidth, totalTiles);
-//		    Uncomment the next line to view the entire gameboard for debugging
+//		    Uncomment the next line to view the entire gameboard for debugging - all tiles will be revealed after turn 2
 //		    tile.setOpen(true);
 		}
+		
+		Gameboard.makeBoard(boardWidth, boardHeight, totalTiles, tileObjectsArray);
 		
 		Game.setGameActive(true);
 		
 		while (Game.isGameActive()) {
 			activeLetter = s.next().charAt(0);
 			activeNumber = s.nextInt();
-			activeTile = (Helpers.convertInputs(activeLetter, activeNumber, boardHeight));
+			activeTile = (Helpers.convertInputs(activeLetter, activeNumber, boardWidth));
 			Game.takeTurn(activeTile, tileObjectsArray);
 			System.out.printf("You chose tile %s%s\n", activeLetter, activeNumber);
 			Gameboard.makeBoard(boardWidth, boardHeight, totalTiles, tileObjectsArray);
+			Game.isGameWon(totalTiles, totalMines);
 		}
 		
 
