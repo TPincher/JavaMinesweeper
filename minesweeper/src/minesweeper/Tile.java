@@ -5,7 +5,7 @@ public class Tile {
 	
 	private int tileNumber;
 	private boolean hasMine;
-	private boolean isOpen;
+	protected boolean isOpen;
 	private boolean hasFlag;
 	private int surroundingMines;
 	
@@ -84,7 +84,7 @@ public class Tile {
 		
 		//right
 		if (((tileNumber + 1) % rowLength != 0) && (tileObjectsArray[tileNumber + 1].hasMine == true)) {
-					mineCount += 1;
+				mineCount += 1;
 		};
 		
 		//bottom-left
@@ -106,9 +106,9 @@ public class Tile {
 		if (tileObjectsArray[tileNumber].hasMine == true) {
 			mineCount = 9;
 		}
-
 		
 		this.surroundingMines = mineCount;
+		
 	}
 
 	public void TileArrayMaker (int totalTiles) {

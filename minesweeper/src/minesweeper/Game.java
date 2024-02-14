@@ -36,6 +36,12 @@ public class Game {
 			
 		}
 	}
+	
+	public static void addToOpenArray(int turnTile) {
+		if (!checkedTiles.contains(turnTile)) {
+			checkedTiles.add(turnTile);
+		}
+	}
 
 	public static void isGameWon(int totalTiles, int totalMines) {
 		int size = checkedTiles.size();
