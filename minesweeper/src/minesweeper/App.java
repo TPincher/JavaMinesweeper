@@ -102,6 +102,11 @@ public class App {
 		
 		Gameboard.makeBoard(boardWidth, boardHeight, totalTiles, tileObjectsArray);
 		
+		if (tileObjectsArray[activeTile].getSurroundingMines() == 0) {
+			Cascade.callCascade(tileObjectsArray, activeTile, boardWidth, totalTiles);
+			Gameboard.makeBoard(boardWidth, boardHeight, totalTiles, tileObjectsArray);
+		}
+		
 		Game.setGameActive(true);
 		
 		while (Game.isGameActive()) {
@@ -109,7 +114,9 @@ public class App {
 			activeNumber = s.nextInt();
 			activeTile = (Helpers.convertInputs(activeLetter, activeNumber, boardWidth));
 			Game.takeTurn(activeTile, tileObjectsArray);
-			System.out.printf("You chose tile %s%s\n", activeLetter, activeNumber);
+			if (tileObjectsArray[activeTile].getSurroundingMines() == 0) {
+				Cascade.callCascade(tileObjectsArray, activeTile, boardWidth, totalTiles);
+			}
 			Gameboard.makeBoard(boardWidth, boardHeight, totalTiles, tileObjectsArray);
 			Game.isGameWon(totalTiles, totalMines);
 		}

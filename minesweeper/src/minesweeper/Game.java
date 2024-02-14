@@ -36,12 +36,18 @@ public class Game {
 			
 		}
 	}
+	
+	public static void addToOpenArray(int turnTile) {
+		if (!checkedTiles.contains(turnTile)) {
+			checkedTiles.add(turnTile);
+		}
+	}
 
 	public static void isGameWon(int totalTiles, int totalMines) {
 		int size = checkedTiles.size();
 		if (size == (totalTiles - totalMines)) {
 			setGameActive(false);
-			System.out.println("Congratulations! You've cleared the field");
+			System.out.println("Congratulations! You have cleared the field");
 		}
 	}
 
