@@ -41,7 +41,7 @@ public class Game {
 		int size = checkedTiles.size();
 		if (size == (totalTiles - totalMines)) {
 			setGameActive(false);
-			System.out.println("Congratulations! You've cleared the field");
+			System.out.println("Congratulations! You have cleared the field");
 		}
 	}
 
