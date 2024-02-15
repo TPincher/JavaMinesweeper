@@ -2,6 +2,14 @@ package minesweeper;
 
 public class Cascade {
 
+	
+	// cascading works by checking if a tile.surroundingMines is 0, and then checking the same logic for
+	// the tile above, then left, then top-left, down, down-left, right, top-right and bottom-right, in
+	// that order. Every time it detects a tile has no surrounding mines, it recurses into itself, and
+	// passes the same arguments, except argument 2 where the tile it has moved to replaces the previous tile.
+	
+	// They all follow the same structure, but have different logic. The first one is broken out with comments.
+	
 	public static void callCascade(Tile[] tileObjectsArray, int tileNumber, int rowLength, int totalTiles) {
 		
 		
