@@ -57,6 +57,10 @@ public class Tile {
 		return surroundingMines;
 	}
 
+	
+	// This is checking every surrounding tile to 1) see if it exists, and 2) if it has a mine. It adds that up
+	// and saves it as it's own surroundingMines value. This is completed for every tile on the board
+	// at game creation.
 	public void setSurroundingMines(Tile[] tileObjectsArray, int tileNumber, int rowLength, int totalTiles) {
 
 		int mineCount = 0;
