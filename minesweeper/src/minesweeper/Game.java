@@ -26,7 +26,6 @@ public class Game {
 		if (mines.contains(turnTile)) {
 			System.out.println("That was a mine. You are dead.");
 			setGameActive(false);
-			//Would you like to play again?
 		}
 		if (checkedTiles.contains(turnTile)) {
 			return ;
