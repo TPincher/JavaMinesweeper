@@ -1,16 +1,28 @@
-# JavaMinesweeper
+# Minesweeper
 
-This is a project for my \_nology course. The idea is to replicate the original game 'Minesweeper' in Java,
+This is a project for my \_nology course. The MVP outline is to replicate the original game 'Minesweeper' in Java,
 without the use of any online tutorials.
 
 ![Minesweeper Gif](./Assets/Minesweper.gif)
 
-# What I learned during this project
+- A user is able to select from a pre-set difficulty, or create their own custom grid,
+  up to 40x40 in size.
+- Users can then enter co-ordinates to play tiles, which will indicate the number of mines in the surrounding
+  8 squares.
+- If there are no mines in the surrounding tiles, the game will cascade to the surrounding 8 tiles, continuing this proceasd until the area
+  is fully enclosed by a perimiter of mined tiles.
+- If a tile with a mine is selected, the tile will display a 9, and the user is informed that the game is over.
+
+## The stack
+
+This project is in pure Java, made with the Eclipse IDE
+
+## What I learned during this project
 
 This was my first experience with using Java, or any similar language. It'd certainly been a paradigm shift from JavaScript and React. Mostly,
 I got a better understanding of how the language works, and how to work within the Eclipse IDE.
 
-# What I struggled with
+## What I struggled with
 
 It was difficult to context switch every day between Java and JavaScript with one language in the morning and one in the afternoon. Instead of just jumping straight from one to the next, I may benefit from a short break in between.
 
@@ -19,7 +31,7 @@ this project, but I needed to make it work by the due date, so this will be the 
 
 The logic for discovering the surrounding mines to a tile and the cascading functionality seems very bloated, but I'm not yet sure how else to approach it.
 
-# What still needs to be done?
+## What still needs to be done?
 
 There's still a lot of code that needs to be moved around, particularly out of the App file. This should really just be calling the game to begin,.
 
@@ -32,7 +44,7 @@ There's a way to add colour to both characters and backgrounds in Java, which co
 
 Testing could be implemented.
 
-# What would I do differently on a rebuild?
+## What would I do differently on a rebuild?
 
 This was a difficult project in that I've never done anything like it before, in a language that I'm new to. I would make sure to separate
 the logic out from the start, so that there's much less work to do in the refactor stage, but once this has been passed in I'm going to go check a few
