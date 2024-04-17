@@ -14,6 +14,7 @@ public class Gameboard {
 		makeBoardBottom(boardWidth);
 	}
 	
+	
 	public static void makeBoard(int boardWidth, int boardHeight, int totalTiles, Tile[] tileObjectsArray) {
 		makeBoardLetters(boardWidth);
 		makeBoardTop(boardWidth);
@@ -63,6 +64,7 @@ public class Gameboard {
 		System.out.print("┃\n");
 	}
 	
+	
 	private static void playingRow(int boardWidth, Tile[] tileObjectsArray) {
 		System.out.print("1  ");
 		for (int i = 0; i <= boardWidth - 1; i++) {
@@ -75,6 +77,7 @@ public class Gameboard {
 		System.out.print("┃\n");
 	}
 	
+	
 	private static void blankPlayingRow(int gameSize, int row) {
 		if ((row + 2) < 10) {
 			System.out.print((row + 2) + "  ");
@@ -86,6 +89,7 @@ public class Gameboard {
 		}
 		System.out.print("┃\n");
 	}
+	
 	
 	private static void playingRow(int gameSize, int totalTiles, Tile[] tileObjectsArray, int row) {
 		if ((row + 2) < 10) {
@@ -105,10 +109,6 @@ public class Gameboard {
 	
 	
 	private static void makeBoardBottom(int gameSize) {
-		
-//		if (gameSize.equals("S")) {
-//			System.out.println("Small game");
-//		}
 
 		System.out.print("   ┗━━");
 		for (int i = 0; i <= gameSize-2; i++) {
