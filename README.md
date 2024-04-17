@@ -1,7 +1,9 @@
 # JavaMinesweeper
 
-This is a project for my _nology course. The idea is to replicate the original game 'Minesweeper' in Java,
+This is a project for my \_nology course. The idea is to replicate the original game 'Minesweeper' in Java,
 without the use of any online tutorials.
+
+![Minesweeper Gif](./Assets/Minesweper.gif)
 
 # What I learned during this project
 
@@ -15,8 +17,7 @@ It was difficult to context switch every day between Java and JavaScript with on
 I'm still a ways off with the Java syntax as well, though this project helped greatly. I'm sure I could have utilized streams and maybe interfaces in
 this project, but I needed to make it work by the due date, so this will be the focus of a refactoring exercise.
 
-The logic for discovering the surrounding mines to a tile and the cascading functionality seems very bloated, but I'm not yet sure how else to approach it. 
-
+The logic for discovering the surrounding mines to a tile and the cascading functionality seems very bloated, but I'm not yet sure how else to approach it.
 
 # What still needs to be done?
 
@@ -24,7 +25,7 @@ There's still a lot of code that needs to be moved around, particularly out of t
 
 There's a remaining bug with one input being repeated which needs to be addressed before anything else.
 
-The ability to 'flag' a square so that you can't accidentaly trigger it shouldn't be too difficult to implement, and each tile object already has 
+The ability to 'flag' a square so that you can't accidentaly trigger it shouldn't be too difficult to implement, and each tile object already has
 a boolean assigned for this purpose.
 
 There's a way to add colour to both characters and backgrounds in Java, which could make the program more visually distinct
